@@ -45,7 +45,7 @@ class SignupsController < ApplicationController
     respond_to do |format|
       if @signup.save
         format.html { redirect_to @signup, notice: 'Signup was successfully created.' }
-        format.json { render json: @signup, status: :created, location: @signup }
+        format.json { render json: @signup, status: :created, location: @signup, :callback => params[:callback] }
       else
         format.html { render action: "new" }
         format.json { render json: @signup.errors, status: :unprocessable_entity }

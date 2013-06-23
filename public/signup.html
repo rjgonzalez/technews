@@ -53,44 +53,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>News</legend>
-
-<!-- title-->
-<div class="control-group">
-  <label class="control-label" for="title">Title</label>
-  <div class="controls">
-    <input id="title" name="title" type="text" placeholder="" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<!-- description -->
-<div class="control-group">
-  <label class="control-label" for="description">Description</label>
-  <div class="controls">                     
-    <textarea id="description" name="description"></textarea>
-  </div>
-</div>
-
-<!-- url-->
-<div class="control-group">
-  <label class="control-label" for="url">URL</label>
-  <div class="controls">
-    <input id="url" name="url" type="text" placeholder="" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<hr />
-
-<!-- name-->
-<div class="control-group">
-  <label class="control-label" for="name">Your Name</label>
-  <div class="controls">
-    <input id="name" name="name" type="text" placeholder="" class="input-xlarge" required="">
-    
-  </div>
-</div>
+<legend>Sign-Up</legend>
 
 <!-- email-->
 <div class="control-group">
@@ -101,17 +64,6 @@
   </div>
 </div>
 
-<!-- twitter-->
-<!-- Prepended text-->
-<div class="control-group">
-  <label class="control-label" for="twitter">Your Twitter</label>
-  <div class="controls">
-    <div class="input-prepend">
-      <span class="add-on">@</span>
-      <input id="twitter" name="twitter" class="input-xlarge" type="text">
-    </div>
-  </div>
-</div>
 
 <!-- Button -->
 <div class="control-group">
@@ -165,20 +117,20 @@
 */
 
             //var jsonForm = $('#formData').serializeObject();
-            var form_title = $('#title').val();
-            var form_description = $('#description').val();
-            var form_name = $('#name').val();
+            // var form_title = $('#title').val();
+            // var form_description = $('#description').val();
+            // var form_name = $('#name').val();
             var form_email = $('#email').val();
-            var form_twitter = $('#twitter').val();
-            var form_url = $('#url').val();
+            // var form_twitter = $('#twitter').val();
+            // var form_url = $('#url').val();
 
-            var jsonObject = JSON.stringify({ "title": form_title, "description" : form_description, "name": form_name, "email": form_email, "twitter": form_twitter, "url": form_url });
+            var jsonObject = JSON.stringify({ "email": form_email });
 
             console.log(jsonObject);
             
             $.ajax({
                 type: "POST",
-                url: "http://ourtechhub.herokuapp.com/news.json",
+                url: "http://ourtechhub.herokuapp.com/signups.json",
                 data: jsonObject,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

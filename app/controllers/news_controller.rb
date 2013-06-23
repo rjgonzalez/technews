@@ -96,7 +96,7 @@ class NewsController < ApplicationController
       end
 
         format.html { redirect_to @news, notice: 'News was successfully created.' }
-        format.json { render json: @news, status: :created, location: @news }
+        format.json { render json: @news, status: :created, location: @news, :callback => params[:callback] }
       else
         format.html { render action: "new" }
         format.json { render json: @news.errors, status: :unprocessable_entity }
