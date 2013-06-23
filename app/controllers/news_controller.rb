@@ -56,9 +56,12 @@ class NewsController < ApplicationController
 
           encoded1 = URI::encode(@news.description)
           encoded2 = URI::encode(@news.title)
+          encoded3 = URI::encode(@news.name)
 
           description = encoded1.gsub(' ','%%%20')
           title = encoded2.gsub(' ','%%%20')
+          name = encoded3.gsub(' ','%%%20')
+          twitterName = "http://twitter.com/#{@news.twitter}"
           ap title
 
         
@@ -79,13 +82,12 @@ class NewsController < ApplicationController
           fb_url = bitly.shorten(facebook)
           fb_final = fb_url.shorten
 
-          message = "%0D%0D#{title}%0D%0D#{description}%0D%0DShare:%0D%0DFacebook:%20#{fb_final}%0D%0DTwitter:%20#{twitter_final}"
+          message = "Title:%0D%0D#{title}%0D%0DDescription:%0D%0D#{description}%0D%0D#{@news.url}%0D%0DSent%20by:%20#{name},%20#{twitterName}%0D%0DShare:%20Facebook:%20#{fb_final}%20,%20Twitter:%20#{twitter_final}"
+          # message = "%0D%0D#{title}%0D%0D#{description}%0D%0DShare:%0D%0DFacebook:%20#{fb_final}%0D%0DTwitter:%20#{twitter_final}"
           # message = "%0D%0D#{title}%0D%0D#{description}%0D%0DShare:%0D%0Dhttps://twitter.com/intent/tweet?text=#{description}%20#{@news.url}"
-          email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{emailAddress}&toname=Caca%20Stranger&subject=#{subject}&text=#{message}&from=news@ourtechhub.com&fromname=Our%20Tech%20Hub"
+          email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{emailAddress}&toname=Everyone&subject=#{subject}&text=#{message}&from=#{@news.email}&fromname=#{name}"
 
           #Send email to request signature (with Sendgrid)
-
-          # encoded = URI::encode(email)
           ap 'Email Data'
           ap email
           # ap 'caca'
