@@ -71,6 +71,7 @@ class NewsController < ApplicationController
           #Set email content. 
           subject = "More%20local%20tech%20news"
           footer = "%0D%0DThanks,%0D%0D%5F%5F%0D%0DOur%20Tech%20Hub"
+          unsubscribe = "To%20unsubscribe%20email:%20justin@customerdevlabs.com"
 
           #links
           bitly = Bitly.new('rjgonzo','R_e5e13a8afae46931a3091994f4b844d7')
@@ -82,7 +83,7 @@ class NewsController < ApplicationController
           fb_url = bitly.shorten(facebook)
           fb_final = fb_url.shorten
 
-          message = "Title:%0D%0D#{title}%0D%0DDescription:%0D%0D#{description}%0D%0D#{@news.url}%0D%0DSent%20by:%20#{name},%20#{twitterName}%0D%0DShare:%20Facebook:%20#{fb_final}%20,%20Twitter:%20#{twitter_final}"
+          message = "Title:%0D%0D#{title}%0D%0DDescription:%0D%0D#{description}%0D%0D#{@news.url}%0D%0DSent%20by:%20#{name},%20#{twitterName}%0D%0DShare:%20Facebook:%20#{fb_final}%20,%20Twitter:%20#{twitter_final}%0D%0D#{unsubscribe}"
           # message = "%0D%0D#{title}%0D%0D#{description}%0D%0DShare:%0D%0DFacebook:%20#{fb_final}%0D%0DTwitter:%20#{twitter_final}"
           # message = "%0D%0D#{title}%0D%0D#{description}%0D%0DShare:%0D%0Dhttps://twitter.com/intent/tweet?text=#{description}%20#{@news.url}"
           email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{emailAddress}&toname=Everyone&subject=#{subject}&text=#{message}&from=#{@news.email}&fromname=#{name}"
