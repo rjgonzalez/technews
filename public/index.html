@@ -183,12 +183,12 @@
             
             $.ajax({
                 type: "POST",
-                url: "http://ourtechhub.herokuapp.com/signup.json",
+                url: "http://ourtechhub.herokuapp.com/news.json",
                 data: jsonObject,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    window.location.replace("/signups");
+                    window.location.replace("/");
                 }
             });
             
