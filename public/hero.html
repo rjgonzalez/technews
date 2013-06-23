@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sharing links thing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Project name</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>News</legend>
+
+<!-- title-->
+<div class="control-group">
+  <label class="control-label" for="title">Title</label>
+  <div class="controls">
+    <input id="title" name="title" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- description -->
+<div class="control-group">
+  <label class="control-label" for="description">Description</label>
+  <div class="controls">                     
+    <textarea id="description" name="description"></textarea>
+  </div>
+</div>
+
+<!-- name-->
+<div class="control-group">
+  <label class="control-label" for="name">Name</label>
+  <div class="controls">
+    <input id="name" name="name" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- email-->
+<div class="control-group">
+  <label class="control-label" for="email">E-Mail</label>
+  <div class="controls">
+    <input id="email" name="email" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- twitter-->
+<!-- Prepended text-->
+<div class="control-group">
+  <label class="control-label" for="twitter">Twitter</label>
+  <div class="controls">
+    <div class="input-prepend">
+      <span class="add-on">@</span>
+      <input id="twitter" name="twitter" class="input-xlarge" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- url-->
+<div class="control-group">
+  <label class="control-label" for="url">URL</label>
+  <div class="controls">
+    <input id="url" name="url" type="text" placeholder="" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <div class="controls">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+
+      <hr>
+
+      <footer>
+        <p>&copy; Justin's News Sharing Thing Inc. 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+
+        $("#singlebutton").click(function (e) {
+/*
+            $(".dynamicInputs > input[type='text']").filter(function () { return $(this).val() == ""; }).each(
+                function () {
+                    $(this).next().next("br").remove();
+                    $(this).next("select").remove();
+                    $(this).remove();
+                }
+            );
+*/
+
+            //var jsonForm = $('#formData').serializeObject();
+            var form_title = $('#title').val();
+            var form_description = $('#description').val();
+            var form_name = $('#name').val();
+            var form_email = $('#email').val();
+            var form_twitter = $('#twitter').val();
+            var form_url = $('#url').val();
+
+            var jsonObject = JSON.stringify({ "title": form_title, "description" : form_description, "name": form_name, "email": form_email, "twitter": form_twitter, "url": form_url });
+
+            console.log(jsonObject);
+            
+            $.ajax({
+                type: "POST",
+                url: "http://ourtechhub.herokuapp.com/news.json",
+                data: jsonObject,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    window.location.replace("/");
+                }
+            });
+            
+
+        });
+    });
+    </script>
+
+  </body>
+</html>
